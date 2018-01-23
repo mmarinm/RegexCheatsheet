@@ -5,9 +5,14 @@ pattern = /somepattern/flag
 ```
 ## Flags
 ```i``` - With this flag the search is case-insensitive: no difference between A and a
+
 ```g``` - With this flag the search looks for all matches, without it – only the first one
+
 ```m``` - Multiline mode
-```u``` - Enables full unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter The unicode flag.
+
+```u``` - Enables full unicode support. The flag enables correct processing of 
+surrogate pairs. More about that in the chapter The unicode flag.
+
 ```y``` - Sticky mode (covered in the next chapter)
 
 ## Methods
@@ -19,7 +24,9 @@ pattern = /somepattern/flag
     The result is an array with that match and additional properties
 
 **str.match(regexp), with g flag -** When there’s a "g" flag, then str.match returns an array of all matches. There are no additional properties in that array, and parentheses do not create any elements.
+
 We can use special characters in it:
+
 | Symbol |  Inserts |
 |------- | :------- |
 $$     | "$"        |   
@@ -28,27 +35,39 @@ $`     | a part of the string before the match |
 $'     | a part of the string after the match |
 $n     | if n is a 1-2 digit number, then it means the contents of n-th parentheses counting from left to right |
 
+
 **str.split(regexp|substr, limit)** - Splits the string using the regexp (or a substring) as a delimiter.
 
 **str.replace(str|regexp, str|func )** - Looks for any match and returns true/false whether he found it.
 
 **regexp.exec(str)** - Allows to search all matches with parentheses and positions.
-    It behaves differently depending on whether the regexp has the g flag:
-        - If there’s no g, then regexp.exec(str) returns the first match, exactly as str.match(reg).
-        - If there’s g, then regexp.exec(str) returns the first match and remembers the position after it in regexp.lastIndex property. The next call starts to search from regexp.lastIndex and returns the next match. If there are no more matches then regexp.exec returns null and regexp.lastIndex is set to 0.
+
+It behaves differently depending on whether the regexp has the g flag:
+        
+- If there’s no ```g```, then regexp.exec(str) returns the first match, exactly as ```str.match(reg)```
+        
+- If there’s ```g```, then ```regexp.exec(str)``` returns the first match and remembers the position after it in regexp.lastIndex property. The next call starts to search from regexp.lastIndex and returns the next match. 
+If there are no more matches then regexp.exec returns null and regexp.lastIndex is set to 0.
  
       
  ## Character classes
 ```\d``` (“d” is from “digit”) - A digit: a character from 0 to 9.
+
 ```\s``` (“s” is from “space”) - A space symbol: that includes spaces, tabs, newlines.
+
 ```\w (“w” is from “word”)``` - A “wordly” character: either a letter of English alphabet or a digit or an underscore. Non-english letters (like cyrillic or hindi) do not belong to \w
+
 ```\b``` - is a special character class it does not denote a character, bu rather a boundary between the characters
+
 ```.``` – any character except a newline.
 
 ## Reverse classes
   ```\D``` - Non-digit: any character except \d, for instance a letter.
+
   ```\S``` - Non-space: any character except \s, for instance a letter.
+
   ```\W```- Non-wordly character: anything but \w.
+  
   ```\B``` - Non-boundary: a test reverse to \b.
 
 ## Special Characters
